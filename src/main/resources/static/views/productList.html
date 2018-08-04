@@ -1,0 +1,40 @@
+<div ng-controller="productListCtrl"
+     ng-hide="error"
+     class="panel panel-default row">
+    <div class="col-xs-3" style="margin-bottom: 15px">
+        <a class="btn btn-block btn-default btn-lg"
+           ng-class="getCategoryClass('home')"
+           ng-click="selectCategory('home')">
+            Home
+        </a>
+        <a class="btn btn-block btn-default btn-lg"
+           ng-repeat="category in products | unique: 'category' | orderBy: 'toString()'"
+           ng-class="getCategoryClass(category)"
+           ng-click="selectCategory(category)" >
+            {{ category }}
+        </a>
+    </div>
+    <div class="col-xs-8">
+        <div class="well" ng-repeat="item in products | filter: categoryFilter|range: page: pageSize">
+            <h3>
+                <strong>{{ item.name }}</strong>
+                <span class="label label-primary pull-right">
+                    {{ item.price | currency }}
+                </span>
+            </h3>
+            <button class="btn btn-success pull-right"
+                    ng-click="addProduct(item)">
+                Add to cart
+            </button>
+            <span class="lead">{{ item.description }}</span>
+        </div>
+        <div class="pull-right btn-group">
+            <a class="btn btn-default"
+               ng-repeat="_page in products| filter: categoryFilter| pageCount: pageSize"
+               ng-class="getPageClass($index+1)"
+               ng-click="selectPage($index+1)">
+                {{ $index + 1 }}
+            </a>
+        </div>
+    </div>
+</div>
