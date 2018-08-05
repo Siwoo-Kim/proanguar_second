@@ -1,0 +1,111 @@
+<style>
+    .ng-valid.ng-touched {
+        background-color: lightgreen;
+    }
+    .ng-invalid.ng-touched {
+        background-color: lightpink;
+    }
+    .error {
+        color: lightcoral;
+        font-weight: bold;
+    }
+</style>
+<h2>Check out now</h2>
+<p>Please enter your details and we'll send your goods right away</p>
+
+<form name="ngForm" novalidate>
+    <div class="well">
+        <h3>Name</h3>
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text"
+                   class="form-control"
+                   name="name"
+                   ng-model="order.name"
+                   required>
+            <span class="error" ng-show="ngForm.name.$error.required && ngForm.name.$touched">
+                Please enter your Name
+            </span>
+        </div>
+
+        <h3>Address</h3>
+        <div class="form-group">
+            <label>Street</label>
+            <input type="text"
+                   class="form-control"
+                   name="street"
+                   ng-model="order.street"
+                   required>
+            <span class="error" ng-show="ngForm.street.$error.required && ngForm.street.$touched">
+                Please enter your Street
+            </span>
+        </div>
+        
+        <div class="form-group">
+            <label>City</label>
+            <input type="text"
+                   class="form-control"
+                   name="city"
+                   ng-model="order.city"
+                   required>
+            <span class="error" ng-show="ngForm.city.$error.required && ngForm.city.$touched">
+                Please enter your City
+            </span>
+        </div>
+
+
+        <div class="form-group">
+            <label>State</label>
+            <input type="text"
+                   class="form-control"
+                   name="state"
+                   ng-model="order.state"
+                   required>
+            <span class="error" ng-show="ngForm.state.$error.required && ngForm.state.$touched">
+                Please enter your State
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label>Zip</label>
+            <input type="text"
+                   class="form-control"
+                   name="zip"
+                   ng-model="order.zip"
+                   required>
+            <span class="error" ng-show="ngForm.zip.$error.required && ngForm.zip.$touched">
+                Please enter your Zip
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label>Country</label>
+            <input type="text"
+                   class="form-control"
+                   name="country"
+                   ng-model="order.country"
+                   required>
+            <span class="error" ng-show="ngForm.country.$error.required && ngForm.country.$touched">
+                Please enter your Country
+            </span>
+        </div>
+
+        <h3>Options</h3>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"
+                       name="giftwrap"
+                       ng-model="order.giftwrap">
+                Gift wrap these items
+            </label>
+        </div>
+
+        <div class="text-center">
+            <button class="btn btn-primary"
+                    ng-disabled="ngForm.$invalid"
+                    ng-click="sendOrder(order)">
+                Complete order
+            </button>
+        </div>
+    </div>
+</form>
